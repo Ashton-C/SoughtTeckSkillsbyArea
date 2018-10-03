@@ -1,0 +1,4 @@
+requests==2.19.1
+beautifulsoup4==4.6.3
+Flask==1.0.2
+Flask-Bootstrap==3.3.7.1
