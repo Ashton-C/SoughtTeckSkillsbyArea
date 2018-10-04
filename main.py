@@ -65,7 +65,7 @@ indeed = JobSite("indeed")
 
 # Change location here (for now :/).
 ############################
-location = "Portland, OR"
+location = "Salt Lake City, UT"
 ############################
 
 # test variable
