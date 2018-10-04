@@ -7,7 +7,6 @@ all_languages = {
 "C#": 0,
 "PHP": 0,
 "JavaScript": 0,
-"Javascript": 0,
 "JS": 0,
 "SQL": 0,
 "Assembly": 0,

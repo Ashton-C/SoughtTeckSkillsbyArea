@@ -15,7 +15,7 @@ class JobSite:
         if self.name == "stackoverflow":
             range_var = 1
         if self.name == "indeed":
-            range_var = 1
+            range_var = 5
         for i in range(0, range_var):
             if self.name == "stackoverflow":
                 listings_page = "https://{}.com/jobs?q={}&l={}".format(self.name, position, loc)
