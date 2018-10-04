@@ -4,6 +4,7 @@ from jobsiteclass import JobSite
 from languages import *
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
+import operator
 
 
 app = Flask(__name__)
@@ -27,7 +28,8 @@ def combine_like_terms():
         pass
 
 def remove_empty(field):
-    combine_like_terms()
+    if field == all_languages:
+        combine_like_terms()
     to_remove = []
     for word in field:
         if field[word] == 0:
@@ -40,37 +42,43 @@ fields = [all_languages, all_frameworks, all_databases, all_platforms]
 
 
 def sort_list(field):
-    pass
-    
-
-def prettify_output(field):
-    for word in field:
-        print("{}% of job postings asked for skills in {}.".format(round(((field.get(word)/(x + y)) * 100.0), 2), word))
+    sorted_field = sorted(field.items(), key=operator.itemgetter(1), reverse=True)
+    return sorted_field
 
 
 def combine(field):
     remove_empty(field)
-    sort_list(field)
-#    prettify_output(field)
+    field = sort_list(field)
+    return field
+
+
+def data_collect(fields):
+    temp = []
+    for field in fields:
+        field = combine(field)
+        temp.append(field)
+    return temp
+    
 
 stackoverflow = JobSite("stackoverflow")
 indeed = JobSite("indeed")
 
+# Change location here (for now :/).
+############################
 location = "Portland, OR"
+############################
 
+# test variable
 x = 0
-#x = stackoverflow.get_listings("Software Developer", location)
+
+# this starts the data collection methods and processes it.
+x = stackoverflow.get_listings("Software Developer", location)
 y = indeed.get_listings("Software Developer", location)
-for field in fields:
-    combine(field)
+fields = data_collect(fields)
+
 
 @app.route('/', methods=["GET", "POST"])
 def welcome():
-    # if "go" in request.form:
-    #     get_data()
-    #     consolidate(field, fields)
-    #     return render_template('home_with_data.html', fields=fields, x=x, y=y, loc=location)
-    # else:
         return render_template('home_with_data.html', fields=fields, x=x, y=y, loc=location)
 
 

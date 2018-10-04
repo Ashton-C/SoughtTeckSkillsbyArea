@@ -44,10 +44,10 @@
                             {% for item in field %}
                                 <p>
                                     <div class="progress">
-                                        <div class="progress-bar bg-success"    role="progressbar" style="width: {{ '%0.2f'| format    (100*   (field[item]/(x+y))) }}%;" aria-valuenow="{ { field[item] }}" aria-valuemin="0" aria-valuemax="{ {   x + y }}">
+                                        <div class="progress-bar bg-success"    role="progressbar" style="width: {{ '%0.2f'| format    (100*   (item[1]/(x+y))) }}%;" aria-valuenow="{ { item[1] }}" aria-valuemin="0" aria-valuemax="{ {   x + y }}">
                                         </div>
                                     </div>
-                                    {{ '%0.2f'| format(100*(field[item]/(x+y))) }}% of  postings are looking for skills in {{ item }}.<br>
+                                    {{ '%0.2f'| format(100*(item[1]/(x+y))) }}% of  postings are looking for skills in {{ item[0] }}.<br>
                                 </p>
                             {% endfor %}
                         </div>
