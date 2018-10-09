@@ -1,3 +1,4 @@
-html {
-    background-color: #333333;
+html body div#main {
+background: rgb(131,58,180);
+background: linear-gradient(135deg, #ba66ff 0%,#ffa589 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }

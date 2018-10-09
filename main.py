@@ -74,12 +74,17 @@ x = 0
 # this starts the data collection methods and processes it.
 x = stackoverflow.get_listings("Software Developer", location)
 y = indeed.get_listings("Software Developer", location)
+postings = x + y
 fields = data_collect(fields)
 
 
 @app.route('/', methods=["GET", "POST"])
 def welcome():
-        return render_template('home_with_data.html', fields=fields, x=x, y=y, loc=location)
+        return render_template('home.html', fields=fields, postings=postings, loc=location)
+
+@app.route('/data', methods=["GET", "POST"])
+def data():
+    return render_template('home_with_data.html', fields=fields, postings=postings, loc=location)
 
 
 if __name__ == '__main__':
